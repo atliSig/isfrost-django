@@ -1,0 +1,29 @@
+{% load static i18n %}
+<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+	<button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span class="navbar-toggler-icon"></span></button><a href="#" class="navbar-brand"><img src="{% static 'isfrost_app/images/isfrost_logo.png' %}" class="navbar-brand-img"/></a>
+	<div id="navbarSupportedContent" class="collapse navbar-collapse">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active"><a href="#" class="nav-link">Heim<span class="sr-only">(current)</span></a></li>
+			<li class="nav-item dropdown"><a id="navbarDropdownMenuLink1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Vörur</a>
+				<div aria-labelledby="navbarDropdownMenuLink1" class="dropdown-menu">
+					{% for category in product_categories %}
+						<a href="#" class="dropdown-item">{{category.category_name}}</a>
+					{% endfor %}
+				</div>
+			</li>
+			<li class="nav-item dropdown"><a id="navbarDropdownMenuLink2" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Þjónusta</a>
+				<div aria-labelledby="navbarDropdownMenuLink2" class="dropdown-menu">
+					{% for category in service_categories %}
+						<a href="#" class="dropdown-item">{{category.category_name}}</a>
+					{% endfor %}
+				</div>
+			</li>
+			<li class="nav-item"><a href="#" class="nav-link">Um ísfrost</a></li>
+			<li class="nav-item"><a data-toggle="modal" data-target="#contact-modal" href="#" class="nav-link">Hafa samband</a></li>
+		</ul>
+		<form class="form-inline my-2 my-lg-0">
+		<input type="text" placeholder="Leit" class="form-control mr-sm-2"/>
+		<button type="submit" class="btn btn-outline-primary my-2 my-sm-0">Leita</button>
+		</form>
+	</div>
+</nav>
