@@ -31,5 +31,6 @@ class Service(models.Model):
 	service_name = models.CharField('Service name', max_length=200)
 	pub_date = models.DateTimeField('Date published', default = timezone.now)
 	service_category = models.ForeignKey(ServiceCategory, on_delete=models.CASCADE, default=1)
+	service_text = models.TextField('About service', default='Engar nánari upplýsingar')
 	def __str__(self):
 		return self.service_name
