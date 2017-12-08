@@ -1,1 +1,1 @@
-web: gunicorn isfrost_project.wsgi --pythonpath isfrost_project --settings=isfrost_project.settings.production --log-file - --log-level debug
+web: gunicorn isfrost_project.wsgi --log-file - 
