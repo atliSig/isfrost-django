@@ -8,7 +8,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
-
 SECRET_KEY = config('SECRET_KEY')
 
 ALLOWED_HOSTS = ['isfrost-django.herokuapp.com']
