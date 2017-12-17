@@ -117,56 +117,25 @@
 		</div>
 	</div>
 	<div class="row content-row">
-		<div class="col-lg-4 col-md-6 col-12 d-flex">
-			<div class="card content-card align-self-stretch">
-				<div class="card-block">
-					<h3 class="card-title">Bíladeildin
-						<span class="pull-right">
-							<i class="fa fa-car"></i>
-						</span>
-					</h3>
-					<p class="card-text">
-						Ísfrost ehf rekur sérhæfða deild sem sér um kæli og frystibúnað á sendi- og flutningabílum ásamt sölu, ísetningu og þjónustu
-					</p>
-				</div>
-				<div class="card-footer">
-					<a href="#" class="btn btn-primary pull-right">Skoða nánar</a>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-4 col-md-6 col-12 d-flex">
-			<div class="card content-card align-self-stretch">
-				<div class="card-block">
-					<h3 class="card-title">Kælideildin
-						<span class="pull-right">
-							<i class="fa fa-snowflake-o"></i>
-						</span>
-					</h3>
-					<p class="card-text">Kælideildin sér um allra handa sölu, uppsetningu og þjónustu á kæli- og frystibúnaði.</p>
-				</div>
-				<div class="card-footer">
-					<a href="#" class="btn btn-primary pull-right">Skoða nánar</a>
+		{% for category in service_categories %}
+			<div class="col-lg-4 col-md-6 col-12 d-flex">
+				<div class="card content-card align-self-stretch">
+					<div class="card-block">
+						<h3 class="card-title">{{category.category_name}}
+							<span class="pull-right">
+								<i class="fa fa-{{category.category_icon}}"></i>
+							</span>
+						</h3>
+						<p class="card-text">
+							{{category.category_description}}
+						</p>
+					</div>
+					<div class="card-footer">
+						<a href="#" class="btn btn-primary pull-right">Skoða nánar</a>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-lg-4 col-md-6 col-12 d-flex">
-			<div class="card content-card align-self-stretch">
-				<div class="card-block">
-					<h3 class="card-title">Neyðarþjónusta
-						<span class="pull-right">
-							<i class="fa fa-exclamation-triangle"></i>
-						</span>
-					</h3>
-					<p class="card-text">
-						Ísfrost rekur fullkomið fjarvöktunar og fjarstjórnunarkerfi þar sem fylgst er með hitastigi í kælum og frystum um land allt,
-						24 tíma sólarhringsins, alla daga ársins.
-					</p>
-				</div>
-				<div class="card-footer">
-					<a href="#" class="btn btn-primary pull-right">Skoða nánar</a>
-				</div>
-			</div>
-		</div>
+		{% endfor %}
 	</div>
 	<div id="vorurnar" class="row">
 		<div class="col-12">
@@ -179,117 +148,42 @@
 			<hr/>
 		</div>
 	</div>
+	{% for category in product_categories %}
 	<div class="row">
-		<div class="col-4 d-flex align-items-center">
-			<img src="https://isfrostis.files.wordpress.com/2017/01/macro-system-big.png" class="img-fluid product-img" />
-		</div>
-		<div class="col-8 d-flex align-items-center">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-12">
-						<hr/>
+			<div class="col-4 d-flex align-items-center">
+				<img src="{{ category.category_image.url }}", class="img-fluid product-img" />
+			</div>
+			<div class="col-8 d-flex align-items-center">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12">
+							<hr/>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<h4>Kæli- og frystiklefar</h4>
+					<div class="row">
+						<div class="col-12">
+							<h4>{{category.category_name}}</h4>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<p>
-							Ísfrost ehf er umboðs og söluaðilar fyrir kæli-og frystiklefa frá Polistamp á Ítalíu og Taver á Spáni. Klefarnir eru í stöðluðum
-							stærðum en einnig er hægt að fá þá sérsmíðaða eftir þínu máli.
-						</p>
+					<div class="row">
+						<div class="col-12">
+							<p>{{category.category_description}}</p>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<a href="#" class="btn btn-primary pull-right product-btn">Skoða nánar</a>
+					<div class="row">
+						<div class="col-12">
+							<a href="#" class="btn btn-primary pull-right product-btn">Skoða nánar</a>
+						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<hr/>
+					<div class="row">
+						<div class="col-12">
+							<hr/>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-8 d-flex align-items-center">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-12">
-						<hr/>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<h4>Kæli- og frystibúnaður</h4>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<p>
-							Ísfrost ehf býður upp á fjölmargar útgáfur af kæli og frystibúnaði, allt eftir þínum þörfum. Við ráðleggjum þér með stærð
-							og gerð búnaðarins eftir því sem hentar þínum aðstæðum hverju sinni.
-						</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<a href="#" class="btn btn-primary pull-right product-btn">Skoða nánar</a>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<hr/>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-4 d-flex align-items-center">
-			<img src="https://5.imimg.com/data5/DJ/SU/MY-27695685/industrial-freezer-500x500.jpg" class="img-fluid product-img" />
-		</div>
-	</div>
-	<div class="row content-row">
-		<div class="col-4 d-flex align-items-center">
-			<img src="http://www.lg.com/us/images/air-conditioners/md05601775/gallery/medium01.jpg" class="img-fluid product-img" />
-		</div>
-		<div class="col-8 d-flex align-items-center">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-12">
-						<hr/>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<h4>Loftkæling og varmadælur</h4>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<p>
-							Loftkæling hefur í langan tíma verið notuð á Íslandi en oftast ekki nema til að kæla niður tölvurými þar sem stýring hitastigs
-							skiptir miklu máli við virkni tölvubúnaðarin
-						</p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<a href="#" class="btn btn-primary pull-right product-btn">Skoða nánar</a>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<hr/>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	{% endfor %}
 	<div id="um-okkur" class="row">
 		<div class="col-12">
 			<hr/>

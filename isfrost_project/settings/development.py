@@ -1,5 +1,5 @@
+"""The development environment"""
 import os
-import dj_database_url
 from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -104,6 +105,15 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+# AWS related
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_QUERYSTRING_AUTH = False
+AWS_ACCESS_KEY_ID = config('DEV_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('DEV_AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('DEV_AWS_STORAGE_BUCKET_NAME')
+
 
 
 # Static files (CSS, JavaScript, Images)

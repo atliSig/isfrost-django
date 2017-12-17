@@ -1,3 +1,4 @@
+"""The production environment"""
 import os
 import dj_database_url
 from decouple import config
@@ -17,6 +18,7 @@ DEBUG = False
 
 INSTALLED_APPS = [
     'isfrost_app.apps.IsfrostAppConfig',
+    'storages',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -62,9 +64,8 @@ WSGI_APPLICATION = 'isfrost_project.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default = config('DATABASE_URL')
-    )
+    'default' : dj_database_url.config(
+        default=config('DATABASE_URL'))
 }
 
 # Password validation
@@ -98,6 +99,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+# AWS related
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 # Static files (CSS, JavaScript, Images)
