@@ -1,0 +1,14 @@
+{% extends 'isfrost_app/__base.html' %}
+{% block content %}
+<div class="container">
+	<div class="col-12">
+		<div class="row">
+			{% for category in object_list %}
+			<li><a href="{% url 'main:service_category' category.pk %}">{{ category.pub_date }} - {{ category.category_name }}</a></li>
+			{% empty %}
+				<li>No articles yet.</li>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endblock %}

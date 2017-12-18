@@ -1,21 +1,29 @@
 {% load static i18n %}
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-	<button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span class="navbar-toggler-icon"></span></button><a href="#" class="navbar-brand"><img src="{% static 'isfrost_app/images/isfrost_logo.png' %}" class="navbar-brand-img"/></a>
+	<button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<a href="/" class="navbar-brand">
+		<img src="{% static 'isfrost_app/images/isfrost_logo.png' %}" class="navbar-brand-img"/>
+	</a>
 	<div id="navbarSupportedContent" class="collapse navbar-collapse">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active"><a href="#" class="nav-link">Heim<span class="sr-only">(current)</span></a></li>
 			<li class="nav-item dropdown"><a id="navbarDropdownMenuLink1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Vörur</a>
 				<div aria-labelledby="navbarDropdownMenuLink1" class="dropdown-menu">
 					{% for category in product_categories %}
-						<a href="#" class="dropdown-item">{{category.category_name}}</a>
+						<a href="{% url 'main:product_category' category.pk %}" class="dropdown-item">{{category.category_name}}</a>
 					{% endfor %}
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="{% url 'main:product_categories' %}">Skoða alla</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown"><a id="navbarDropdownMenuLink2" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Þjónusta</a>
 				<div aria-labelledby="navbarDropdownMenuLink2" class="dropdown-menu">
 					{% for category in service_categories %}
-						<a href="#" class="dropdown-item">{{category.category_name}}</a>
+						<a href="{% url 'main:service_category' category.pk %}" class="dropdown-item">{{category.category_name}}</a>
 					{% endfor %}
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="{% url 'main:service_categories' %}">Skoða alla</a>
 				</div>
 			</li>
 			<li class="nav-item"><a href="#" class="nav-link">Um ísfrost</a></li>

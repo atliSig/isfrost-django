@@ -28,11 +28,6 @@ box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .hero-content{
-	background: url('images/glacier.jpg') no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
 	display: flex;
 	padding:50px;
 	height: calc(100vh - 145px);
@@ -167,6 +162,10 @@ border-color:#fff;
 
 nav.navbar{
 	z-index:2;
+}
+
+.card-img-top{
+	width: 100%;
 }
 
 /* Extra Small Devices, Phones */

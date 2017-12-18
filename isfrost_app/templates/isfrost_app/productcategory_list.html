@@ -1,0 +1,8 @@
+<h1>Categories</h1>
+<ul>
+{% for category in object_list %}
+    <li><a href="{% url 'main:product_category' category.pk %}">{{ category.pub_date }} - {{ category.category_name }}</a></li>
+{% empty %}
+    <li>No articles yet.</li>
+{% endfor %}
+</ul>
