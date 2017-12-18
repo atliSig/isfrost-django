@@ -1,1 +1,1 @@
-web: gunicorn isfrost_project.wsgi --log-file - 
+web: gunicorn isfrost_project.wsgi --log-file=- 

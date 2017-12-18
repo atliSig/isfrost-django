@@ -4,7 +4,7 @@ from decouple import config
 from .base import *
 
 ALLOWED_HOSTS = ['isfrost-django.herokuapp.com']
-DEBUG = False
+DEBUG = True
 
 DATABASES = {
     'default' : dj_database_url.config(
