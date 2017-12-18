@@ -87,9 +87,9 @@ USE_TZ = True
 # AWS related
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_QUERYSTRING_AUTH = False
-AWS_ACCESS_KEY_ID = config('DEV_AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = config('DEV_AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = config('DEV_AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
