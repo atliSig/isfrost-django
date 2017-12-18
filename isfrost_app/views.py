@@ -98,8 +98,12 @@ class article_detail_view(generic.DetailView):
         return context
 
 def index_view(request):
+    try:
+        index = IndexPage.objects.all()[:1].get()
+    except:
+        index = None
     context = {
-        'index' : IndexPage.objects.all()[:1].get(),
+        'index' : index,
         'articles': Article.objects.new_items()[:3]
     }
     return render(request, 'isfrost_app/index.html', context)
