@@ -2,6 +2,12 @@
 from django.contrib import admin
 from .models import Product, ProductCategory, Service, ServiceCategory, Staff, Article, Company, IndexPage
 
+def duplicate_action(modeladmin, request, queryset):
+    for object in queryset:
+        object.id = None
+        object.save()
+duplicate_action.short_description = "Búa til afrit af völdum hlut"
+
 class ProductCategoryAdmin(admin.ModelAdmin):
     """An admin model wrapper for the ProductCategory model"""
     fields = ['category_name', 'category_description', 'category_image', 'admin_img', 'pub_date']
@@ -23,8 +29,10 @@ class StaffAdmin(admin.ModelAdmin):
 
 class ArticleAdmin(admin.ModelAdmin):
     """An admin model wrapper for the Article model"""
+    list_display = ['title', 'subtitle', 'pub_date']
     fields = ['title', 'subtitle', 'text', 'image', 'admin_img', 'pub_date']
     readonly_fields = ['admin_img']
+    actions = [duplicate_action]
 
 class IndexPageAdmin(admin.ModelAdmin):
     """An admin model wrapper for the Index page model"""

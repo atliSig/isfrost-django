@@ -1,11 +1,6 @@
 """Definition of views for the isfrost_app app"""
-import datetime
-from django.utils import timezone
-from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponse, HttpResponseRedirect
-from django.urls import reverse
+from django.shortcuts import render
 from django.views import generic
-from django.utils import timezone
 from .models import Service, Product, ProductCategory, ServiceCategory, Staff, Article, IndexPage
 
 class product_category_list_view(generic.ListView):
@@ -84,7 +79,7 @@ class staff_detail_view(generic.DetailView):
 
 class article_list_view(generic.ListView):
     model = Article
-
+    paginate_by = 9
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
@@ -95,6 +90,7 @@ class article_detail_view(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['related'] = Article.objects.all().exclude(pk=context['object'].pk)[:3]
         return context
 
 def index_view(request):

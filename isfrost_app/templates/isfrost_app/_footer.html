@@ -1,0 +1,70 @@
+<div id="upplysingar" class="container-fluid">
+		<div class="container">
+			<div class="row footer-row">
+				<div class="col-xl-4 col-md-6 footer-col first-column">
+					<div class="row footer-row">
+						<div class="col-12">
+							<h4>
+								<span>
+									<i class="fa fa-map-marker footer-icon"></i>
+								</span>{{company.street}}, {{company.postal_code}} {{company.city}}</h4>
+						</div>
+					</div>
+					<div class="row footer-row">
+						<div class="col-12">
+							<p class="p-no-marg footer-subtitle">Opnunartími:</p>
+							<p class="p-no-marg">{{company.hours_weeks}}</p>
+							<p class="p-no-marg">{{company.hours_weekends}}</p>
+						</div>
+					</div>
+					<div class="row footer-row">
+						<div class="col-12">
+							<h2>
+								<a href="tel:0035776666">{{company.phone_number}}</a>
+							</h2>
+						</div>
+					</div>
+					<div class="row footer-row">
+						<div class="col-12">
+							<a href="mailto:{{company.email}}" class="btn btn-outline-primary">
+								<span class="btn-left-icon">
+									<i class="fa fa-envelope"></i>
+								</span>{{company.email}}</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-md-6 footer-col second-column">
+					<div class="list-group">
+						<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between">Vörur
+							<span>
+								<i class="fa fa-external-link default-icon-color"></i>
+							</span>
+						</a>
+						<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between">Þjónusta
+							<span>
+								<i class="fa fa-external-link default-icon-color"></i>
+							</span>
+						</a>
+						<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between">Starfsmenn
+							<span>
+								<i class="fa fa-external-link default-icon-color"></i>
+							</span>
+						</a>
+						<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between">Um Ísfrost
+							<span>
+								<i class="fa fa-external-link default-icon-color"></i>
+							</span>
+						</a>
+						<a href="#" class="list-group-item list-group-item-action d-flex justify-content-between">Hafa samband
+							<span>
+								<i class="fa fa-external-link default-icon-color"></i>
+							</span>
+						</a>
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-12">
+					<iframe id="ja-map" frameborder="0" width="100%" height="100%" src="https://ja.is/webapi/kort/?x={{company.loc_x}}&amp;y={{company.loc_y}}&amp;z=9&amp;layer=map&amp;q=hashid%3A8dM1r"></iframe>
+				</div>
+			</div>
+		</div>
+	</div>

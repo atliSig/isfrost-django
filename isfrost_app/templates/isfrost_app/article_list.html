@@ -1,0 +1,88 @@
+{% extends 'isfrost_app/__base.html' %}
+{% load humanize %}
+{% block content %}
+	<div class="container list-container">
+		<div class="row">
+			<div class="col-12">
+				<h3>Allar fréttir</h3>
+				<hr/>
+			</div>
+		</div>
+		<div class="row">
+			{% if object_list %}
+				{% for article in object_list %}
+					<div class="col-xl-4 col-md-6 col-12">
+						{% include 'isfrost_app/_article_card.html' with article=article%}
+					</div>
+				{% endfor %}
+			{% else %}
+				<h4>Ekkert fannst!</h4>
+				<p>Prófaðu að fara til baka</p>
+				<a href='/' class='btn btn-primary'>Til baka</a>
+			{% endif %}
+		</div>`
+		{% if is_paginated %}
+			<div class="row">
+				<div class="col-12">
+					<hr/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<nav >
+						<ul class="pagination justify-content-center">
+							{% if page_obj.has_previous %}
+								<li class="page-item">
+									<a class="page-link" href='?page={{page_obj.previous_page_number}}'><i class="fa fa-arrow-left"></i> Fyrri</a>
+								</li>
+							{% else %}
+								<li class="page-item disabled">
+									<span class="page-link"><i class="fa fa-arrow-left"></i> Fyrri </span>
+								</li>
+							{% endif %}
+							{% if page_obj.has_previous %}
+								<li class="page-item"><a class="page-link" href='?page={{page_obj.previous_page_number}}'>{{page_obj.number | add:"-1"}}</a></li>
+							{% endif %}
+							<li class="page-item active">
+								<span class="page-link">
+									{{page_obj.number}}
+								</span>
+							</li>
+							{% if page_obj.has_next %}
+								<li class="page-item"><a class="page-link" href='?page={{page_obj.next_page_number}}'>{{page_obj.number | add:"1"}}</a></li>
+							{% endif %}
+							{% if page_obj.has_next %}
+								<li class="page-item">
+									<a class="page-link" href='?page={{page_obj.next_page_number}}'> Næsta <i class="fa fa-arrow-right"></i></a>
+								</li>
+							{% else %}
+								<li class="page-item disabled">
+									<span class="page-link"> Næsta <i class="fa fa-arrow-right"></i> </span>
+								</li>
+							{% endif %}
+						</ul>
+					</nav>
+				</div>
+				<!--<div class="col-4">
+					{% if page_obj.has_previous %}
+						<a href='?page={{page_obj.previous_page_number}}' class='btn btn-primary'>
+							<i class="fa fa-arrow-left"></i>
+							Fyrri
+						</a>
+					{% endif %}
+				</div>
+				<div class="col-4">
+					<p>Síða {{page_obj.number}} af {{page_obj.paginator.num_pages}}</p>
+				</div>
+				<div class="col-4">
+					{% if page_obj.has_next %}
+						<a href='?page={{page_obj.next_page_number}}' class='btn btn-primary'>
+							Næsta
+							<i class="fa fa-arrow-right"></i>
+						</a>
+					{% endif %}	
+				</div>-->
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}

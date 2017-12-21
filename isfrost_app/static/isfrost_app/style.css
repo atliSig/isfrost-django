@@ -168,8 +168,27 @@ nav.navbar{
 	width: 100%;
 }
 
+div.mobile-product-img{
+	display:none !important
+}
+
+.card-img-container{
+	height: 200px;
+	overflow-y: hidden;
+}
+
+.detail-container, .list-container{
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.detail-img-wrapper{
+	background-color: #eee;
+	margin-bottom: 20px;
+}
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
+	
 	.index-button{
 		padding: 10px;
 		font-size: 16px;
@@ -197,6 +216,13 @@ nav.navbar{
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
+	div.mobile-product-img{
+		display:flex !important;
+	}
+
+	div.desktop-product-img{
+		display:none !important
+	}
 	.first-column{
 		border-right: none;
 		text-align: center;
