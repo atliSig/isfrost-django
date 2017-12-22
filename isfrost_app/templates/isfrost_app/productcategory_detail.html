@@ -1,2 +1,20 @@
-<h1>Category</h1>
-<p>{{ object.pub_date }} - {{ object.category_name }}</p>
+{% extends 'isfrost_app/__base.html' %}
+{% block content %}
+	<div class="container list-container">
+		<div class="row">
+			<div class="col-12">
+				<h1>{{object.category_name}}</h1>					
+				<p>{{object.category_description}}</p>
+				<hr/>
+			</div>
+			<div class="col-lg-5 push-lg-7 col-md-12">
+				<div class="detail-img-wrapper">
+					<img class="img-fluid mx-auto d-block"src="{{object.category_image.url}}">								
+				</div>
+			</div>
+			<div class="col-lg-7 pull-lg-5 col-md-12">
+				{{object.detailed_description | linebreaks}}
+			</div>
+		</div>
+	</div>
+{% endblock %}

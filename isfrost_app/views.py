@@ -6,7 +6,7 @@ from .models import Service, Product, ProductCategory, ServiceCategory, Staff, A
 class product_category_list_view(generic.ListView):
     """A generic list view for product categories"""
     model = ProductCategory
-
+    paginate_by = 10
     def get_context_data(self, **kwargs):
         """Gets context for view"""
         context = super().get_context_data(**kwargs)
@@ -35,7 +35,7 @@ class product_detail_view(generic.DetailView):
 class service_category_list_view(generic.ListView):
     """A generic list view for service categories"""
     model = ServiceCategory
-
+    paginate_by = 10
     def get_context_data(self, **kwargs):
         """Gets context for view"""
         context = super().get_context_data(**kwargs)

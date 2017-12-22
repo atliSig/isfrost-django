@@ -15,7 +15,10 @@
 					<p class="lead">{{index.introduction}}</p>
 					<hr class="my-4" />
 					<p>Ef þú hefur einhverjar fyrirspurnir, ekki hika við að senda okkur skilaboð!</p>
-					<a href="#" role="button" data-toggle="modal" data-target="#contact-modal" class="btn btn-outline-secondary">Hafa samband</a>
+					<a href="#" role="button" data-toggle="modal" data-target="#contact-modal" class="btn btn-outline-secondary">
+						<i class="btn-left-icon fa fa-envelope"></i>
+						Hafa samband
+					</a>
 				</div>
 			</div>
 		</div>
@@ -82,6 +85,12 @@
 				</div>
 			</div>
 		{% endfor %}
+		<div class="col-md-4 offset-md-8 col-xl-3 offset-xl-9 col-12">
+			<a href="{% url 'main:service_categories' %}" class="btn btn-block btn-secondary index-info-btn">
+				Skoða alla þjónustuflokka
+				<i class="btn-right-icon fa fa-arrow-right"></i>
+			</a>
+		</div>
 	</div>
 	<div id="vorurnar" class="row">
 		<div class="col-12">
@@ -94,47 +103,58 @@
 			<hr/>
 		</div>
 	</div>
-	{% for category in product_categories %}
-	<div class="row">
-		<div class="col-4 d-flex align-items-center desktop-product-img">
-			<img src="{{ category.category_image.url }}", class="img-fluid product-img" />
-		</div>
-		<div class="col-md-8 col-12 d-flex align-items-center">
-			<div class="container-fluid">
+	<div class="row content-row">
+		<div class="col-12">
+			{% for category in product_categories %}
 				<div class="row">
-					<div class="col-12">
-						<hr/>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<h4>{{category.category_name}}</h4>
-					</div>
-				</div>
-				<div class="row mobile-product-img">
-					<div class="col-12">
+					<div class="col-4 d-flex align-items-center desktop-product-img">
 						<img src="{{ category.category_image.url }}", class="img-fluid product-img" />
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<p>{{category.category_description}}</p>
+					<div class="col-md-8 col-12 d-flex align-items-center">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-12">
+									<hr/>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<h4>{{category.category_name}}</h4>
+								</div>
+							</div>
+							<div class="row mobile-product-img">
+								<div class="col-12">
+									<img src="{{ category.category_image.url }}", class="img-fluid product-img" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<p>{{category.category_description}}</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<a href="#" class="btn btn-primary pull-right product-btn">Skoða nánar</a>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<hr/>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-12">
-						<a href="#" class="btn btn-primary pull-right product-btn">Skoða nánar</a>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<hr/>
-					</div>
-				</div>
-			</div>
+			{% endfor %}
+		</div>
+		<div class="col-md-4 offset-md-8 col-xl-3 offset-xl-9 col-12">
+			<a href="{% url 'main:product_categories' %}" class="btn btn-block btn-secondary index-info-btn">
+				Skoða alla vöruflokka
+				<i class="btn-right-icon fa fa-arrow-right"></i>
+			</a>
 		</div>
 	</div>
-	{% endfor %}
+		
 	<div id="um-okkur" class="row">
 		<div class="col-12">
 			<hr/>

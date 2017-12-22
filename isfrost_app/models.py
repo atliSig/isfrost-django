@@ -9,7 +9,8 @@ class ProductCategory(models.Model):
     category_name = models.CharField('Nafn vöruflokks', max_length=200)
     pub_date = models.DateTimeField('Búið til þann', default=timezone.now)
     category_image = models.ImageField(upload_to='images/product_categories/%Y/%m', null=True)
-    category_description = models.TextField('Um vöruflokk', default='Engar nánari upplýsingar')
+    category_description = models.TextField('Stutt lýsing um vöruflokk', default='Engar nánari upplýsingar')
+    detailed_description = models.TextField('Nánar um vöruflokk', default='Engar nánari upplýsingar', null=True)
     def admin_img(self):
         """Returns a markup block to display image in admin view"""
         return mark_safe('<img src="%s"/>' % self.category_image.url)

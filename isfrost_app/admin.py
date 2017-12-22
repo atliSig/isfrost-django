@@ -10,7 +10,7 @@ duplicate_action.short_description = "Búa til afrit af völdum hlut"
 
 class ProductCategoryAdmin(admin.ModelAdmin):
     """An admin model wrapper for the ProductCategory model"""
-    fields = ['category_name', 'category_description', 'category_image', 'admin_img', 'pub_date']
+    fields = ['category_name', 'category_description', 'detailed_description', 'category_image', 'admin_img', 'pub_date']
     readonly_fields = ['admin_img']
 
 class ProductAdmin(admin.ModelAdmin):

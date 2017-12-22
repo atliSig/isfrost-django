@@ -1,14 +1,79 @@
 {% extends 'isfrost_app/__base.html' %}
 {% block content %}
-<div class="container">
-	<div class="col-12">
-		<div class="row">
-			{% for category in object_list %}
-			<li><a href="{% url 'main:service_category' category.pk %}">{{ category.pub_date }} - {{ category.category_name }}</a></li>
-			{% empty %}
-				<li>No articles yet.</li>
-			{% endfor %}
-		</div>
+<div class="container list-container">
+	<div class="row">
+		<div class="col-12">
+			<h3>Allir þjónustuflokkar</h3>
+			<hr/>
+		</div>  
 	</div>
+	{% if object_list %}
+        {% for category in object_list %}
+            <div class="row">
+                <div class="col-12">
+					<h4>{{category.category_name}} <i class="fa fa-{{category.category_icon}} pull-right"></i></h4>
+				</div>
+				<div class="col-md-6 col-sm-10 col-12">
+					<p>{{category.category_description}}</p>
+				</div>
+				<div class="col-12">
+					<a href="{% url 'main:service_category' category.pk %}" class="btn btn-primary pull-right">Skoða nánar</a>
+				</div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <hr/>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h4>Ekkert fannst!</h4>
+        <p>Prófaðu að fara til baka</p>
+        <a href='/' class='btn btn-primary'>Til baka</a>
+    {% endif %}
+    {% if is_paginated %}
+        <div class="row">
+            <div class="col-12">
+                <hr/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <nav >
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href='?page={{page_obj.previous_page_number}}'><i class="fa fa-arrow-left"></i> Fyrri</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <span class="page-link"><i class="fa fa-arrow-left"></i> Fyrri </span>
+                            </li>
+                        {% endif %}
+                        {% if page_obj.has_previous %}
+                            <li class="page-item"><a class="page-link" href='?page={{page_obj.previous_page_number}}'>{{page_obj.number | add:"-1"}}</a></li>
+                        {% endif %}
+                        <li class="page-item active">
+                            <span class="page-link">
+                                {{page_obj.number}}
+                            </span>
+                        </li>
+                        {% if page_obj.has_next %}
+                            <li class="page-item"><a class="page-link" href='?page={{page_obj.next_page_number}}'>{{page_obj.number | add:"1"}}</a></li>
+                        {% endif %}
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href='?page={{page_obj.next_page_number}}'> Næsta <i class="fa fa-arrow-right"></i></a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <span class="page-link"> Næsta <i class="fa fa-arrow-right"></i> </span>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+	{% endif %}
 </div>
 {% endblock %}

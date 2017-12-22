@@ -8,19 +8,38 @@
 				<hr/>
 			</div>
 		</div>
-		<div class="row">
-			{% if object_list %}
-				{% for article in object_list %}
-					<div class="col-xl-4 col-md-6 col-12">
-						{% include 'isfrost_app/_article_card.html' with article=article%}
+		{% if object_list %}
+			{% for article in object_list %}
+				<div class="row">
+					<div class="col-sm-4 col-12 push-sm-8">
+						<div class="list-img-wrapper">
+							<img class="img-fluid mx-auto d-block list-image" src="{{article.image.url}}">								
+						</div>
 					</div>
-				{% endfor %}
-			{% else %}
-				<h4>Ekkert fannst!</h4>
-				<p>Prófaðu að fara til baka</p>
-				<a href='/' class='btn btn-primary'>Til baka</a>
-			{% endif %}
-		</div>`
+					<div class="col-sm-8 col-12 pull-sm-4">
+						<h4>{{article.title}}</h4>
+						<h5>{{article.subtitle}}</h5>
+						<div class="row">
+								<div class="col-sm-12 col-9">		
+									<i class="fa fa-clock-o"></i> {{article.pub_date | naturaltime}}
+								</div>
+								<div class="col-sm-12 col-3">
+									<a href="{% url 'main:article' article.pk %}" class="btn btn-primary list-button">Lesa</a>
+								</div>
+							</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<hr/>
+					</div>
+				</div>
+			{% endfor %}
+		{% else %}
+			<h4>Ekkert fannst!</h4>
+			<p>Prófaðu að fara til baka</p>
+			<a href='/' class='btn btn-primary'>Til baka</a>
+		{% endif %}
 		{% if is_paginated %}
 			<div class="row">
 				<div class="col-12">
@@ -63,25 +82,6 @@
 						</ul>
 					</nav>
 				</div>
-				<!--<div class="col-4">
-					{% if page_obj.has_previous %}
-						<a href='?page={{page_obj.previous_page_number}}' class='btn btn-primary'>
-							<i class="fa fa-arrow-left"></i>
-							Fyrri
-						</a>
-					{% endif %}
-				</div>
-				<div class="col-4">
-					<p>Síða {{page_obj.number}} af {{page_obj.paginator.num_pages}}</p>
-				</div>
-				<div class="col-4">
-					{% if page_obj.has_next %}
-						<a href='?page={{page_obj.next_page_number}}' class='btn btn-primary'>
-							Næsta
-							<i class="fa fa-arrow-right"></i>
-						</a>
-					{% endif %}	
-				</div>-->
 			</div>
 		{% endif %}
 	</div>
