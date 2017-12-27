@@ -11,16 +11,17 @@
 			<li class="nav-item dropdown"><a id="navbarDropdownMenuLink1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Vörur</a>
 				<div aria-labelledby="navbarDropdownMenuLink1" class="dropdown-menu">
 					{% for category in product_categories %}
-						<a href="{% url 'main:product_category' category.pk %}" class="dropdown-item">{{category.category_name}}</a>
+						<a href="{% url 'main:product_category' category.pk %}" class="dropdown-item">{{category.name}}</a>
 					{% endfor %}
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="{% url 'main:product_categories' %}">Skoða alla flokka</a>
+					<a class="dropdown-item" href="{% url 'main:products' %}"> Allar vörur</a>
+					<a class="dropdown-item" href="{% url 'main:product_categories' %}">Allir flokka</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown"><a id="navbarDropdownMenuLink2" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Þjónusta</a>
 				<div aria-labelledby="navbarDropdownMenuLink2" class="dropdown-menu">
 					{% for category in service_categories %}
-						<a href="{% url 'main:service_category' category.pk %}" class="dropdown-item">{{category.category_name}}</a>
+						<a href="{% url 'main:service_category' category.pk %}" class="dropdown-item">{{category.name}}</a>
 					{% endfor %}
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="{% url 'main:service_categories' %}">Skoða alla flokka</a>
@@ -28,13 +29,13 @@
 			</li>
 			<li class="nav-item dropdown"><a id="navbarDropdownMenuLink3" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Um Ísfrost</a>
 				<div aria-labelledby="navbarDropdownMenuLink2" class="dropdown-menu">
-					<a href="#" class="dropdown-item">Starfsmenn</a>
-					<a href="#" class="dropdown-item">Fréttir</a>
+					<a href="{% url 'main:staff_list' %}" class="dropdown-item">Starfsmenn</a>
+					<a href="{% url 'main:articles' %}" class="dropdown-item">Fréttir</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="{% url 'main:service_categories' %}">Ísfrost</a>
 				</div>
 			</li>
-			<li class="nav-item"><a data-toggle="modal" data-target="#contact-modal" href="#" class="nav-link">Hafa samband</a></li>
+			<li class="nav-item"><a href='mailto:{{company.email}}' class="nav-link">Hafa samband</a></li>
 		</ul>
 		<form class="form-inline my-2 my-lg-0">
 		<input type="text" placeholder="Leit" class="form-control mr-sm-2"/>

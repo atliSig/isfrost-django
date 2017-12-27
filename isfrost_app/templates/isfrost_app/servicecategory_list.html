@@ -11,13 +11,16 @@
         {% for category in object_list %}
             <div class="row">
                 <div class="col-12">
-					<h4>{{category.category_name}} <i class="fa fa-{{category.category_icon}} pull-right"></i></h4>
+					<h4>{{category.name}} <i class="fa fa-{{category.icon}} fa-2x pull-right"></i></h4>
 				</div>
 				<div class="col-md-6 col-sm-10 col-12">
-					<p>{{category.category_description}}</p>
+					<p>{{category.short_description}}</p>
 				</div>
 				<div class="col-12">
-					<a href="{% url 'main:service_category' category.pk %}" class="btn btn-primary pull-right">Skoða nánar</a>
+					<a href="{% url 'main:service_category' category.pk %}" class="btn btn-secondary pull-right">
+                        Skoða nánar
+                        <i class='fa fa-arrow-right btn-right-icon'></i>
+                    </a>
 				</div>
             </div>
             <div class="row">

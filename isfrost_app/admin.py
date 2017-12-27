@@ -10,22 +10,26 @@ duplicate_action.short_description = "Búa til afrit af völdum hlut"
 
 class ProductCategoryAdmin(admin.ModelAdmin):
     """An admin model wrapper for the ProductCategory model"""
-    fields = ['category_name', 'category_description', 'detailed_description', 'category_image', 'admin_img', 'pub_date']
+    fields = ['name', 'short_description', 'detailed_description', 'image', 'admin_img', 'pub_date']
     readonly_fields = ['admin_img']
 
 class ProductAdmin(admin.ModelAdmin):
     """An admin model wrapper for the Product model"""
-    fields = ['pub_date', 'product_name', 'product_category']
+    fields = ['pub_date', 'name', 'product_category','short_description','detailed_description', 'price', 'image', 'admin_img']
+    readonly_fields  = ['admin_img']
+    list_display = ['name']
+    actions = [duplicate_action]
 
 class ServiceCategoryAdmin(admin.ModelAdmin):
     """An admin model wrapper for the ServiceCategory model"""
-    fields = ['category_name', 'category_description', 'category_icon', 'admin_icon', 'pub_date']
+    fields = ['name', 'short_description', 'detailed_description', 'icon', 'admin_icon', 'pub_date']
     readonly_fields = ['admin_icon']
 
 class StaffAdmin(admin.ModelAdmin):
     """An admin model wrapper for the Staff model"""
-    fields = ['name', 'email', 'phone', 'image', 'admin_img', 'pub_date']
+    fields = ['name', 'email', 'phone','position', 'image', 'admin_img', 'pub_date']
     readonly_fields = ['admin_img']
+    actions = [duplicate_action]
 
 class ArticleAdmin(admin.ModelAdmin):
     """An admin model wrapper for the Article model"""

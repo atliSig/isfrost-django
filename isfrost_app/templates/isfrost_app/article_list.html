@@ -9,43 +9,24 @@
 			</div>
 		</div>
 		{% if object_list %}
-			{% for article in object_list %}
-				<div class="row">
-					<div class="col-sm-4 col-12 push-sm-8">
-						<div class="list-img-wrapper">
-							<img class="img-fluid mx-auto d-block list-image" src="{{article.image.url}}">								
-						</div>
+			<div class="row">
+				{% for article in object_list %}
+					<div class="col-lg-4 col-md-6 col-12 d-flex">
+						{% include "isfrost_app/_article_card.html" with article=article %}
 					</div>
-					<div class="col-sm-8 col-12 pull-sm-4">
-						<h4>{{article.title}}</h4>
-						<h5>{{article.subtitle}}</h5>
-						<div class="row">
-								<div class="col-sm-12 col-9">		
-									<i class="fa fa-clock-o"></i> {{article.pub_date | naturaltime}}
-								</div>
-								<div class="col-sm-12 col-3">
-									<a href="{% url 'main:article' article.pk %}" class="btn btn-primary list-button">Lesa</a>
-								</div>
-							</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-12">
-						<hr/>
-					</div>
-				</div>
-			{% endfor %}
+				{% endfor %}
+			</div>
 		{% else %}
 			<h4>Ekkert fannst!</h4>
 			<p>Prófaðu að fara til baka</p>
 			<a href='/' class='btn btn-primary'>Til baka</a>
 		{% endif %}
-		{% if is_paginated %}
-			<div class="row">
-				<div class="col-12">
-					<hr/>
-				</div>
+		<div class="row">
+			<div class="col-12">
+				<hr/>
 			</div>
+		</div>
+		{% if is_paginated %}
 			<div class="row">
 				<div class="col-12">
 					<nav >
@@ -59,17 +40,11 @@
 									<span class="page-link"><i class="fa fa-arrow-left"></i> Fyrri </span>
 								</li>
 							{% endif %}
-							{% if page_obj.has_previous %}
-								<li class="page-item"><a class="page-link" href='?page={{page_obj.previous_page_number}}'>{{page_obj.number | add:"-1"}}</a></li>
-							{% endif %}
 							<li class="page-item active">
 								<span class="page-link">
 									{{page_obj.number}}
 								</span>
 							</li>
-							{% if page_obj.has_next %}
-								<li class="page-item"><a class="page-link" href='?page={{page_obj.next_page_number}}'>{{page_obj.number | add:"1"}}</a></li>
-							{% endif %}
 							{% if page_obj.has_next %}
 								<li class="page-item">
 									<a class="page-link" href='?page={{page_obj.next_page_number}}'> Næsta <i class="fa fa-arrow-right"></i></a>

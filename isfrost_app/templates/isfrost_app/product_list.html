@@ -1,0 +1,87 @@
+{% extends 'isfrost_app/__base.html' %}
+{% block content %}
+{% load humanize %}
+	<div class="container list-container">
+		<div class="row">
+			<div class="col-md-8 col-12">
+				<h2>Allar vörur</h2>
+			</div>
+			<div class="col-md-4 col-12">
+				<div class="dropdown pull-right">
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Velja vöruflokk
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						{% for category in product_categories %}
+							<a class="dropdown-item" href="{% url 'main:products_by_category' category.pk %}">{{category.name}}</a>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			<div class="col-12">
+				<hr/>
+			</div>
+		</div>
+		<div class="row">
+			{% if not object_list %}
+				<div class="col-12">
+					<h3>Engar vörur eru skráðar</h3>
+					<a href='{% url "main:product_categories" %}' class='btn btn-secondary pull-right' >
+						<i class='fa fa-arrow-left btn-left-icon'></i>
+						Allir vöruflokkar 
+					</a>					
+				</div>
+			{% else %}
+				{% for product in object_list %}
+					<div class="col-xl-4 col-md-6 d-flex">
+						{% include 'isfrost_app/_product_card.html' with product=product %}
+					</div>
+				{% endfor %}
+			{% endif %}
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<hr/>
+			</div>
+		</div>
+		{% if is_paginated %}
+			<div class="row">
+				<div class="col-12">
+					<nav >
+						<ul class="pagination justify-content-center">
+							<li class="page-item">
+								<a class="page-link" href='?page=1'>Fyrsta</a>
+							</li>
+							{% if page_obj.has_previous %}
+								<li class="page-item">
+									<a class="page-link" href='?page={{page_obj.previous_page_number}}'><i class="fa fa-arrow-left"></i> Fyrri</a>
+								</li>
+							{% else %}
+								<li class="page-item disabled">
+									<span class="page-link"><i class="fa fa-arrow-left"></i> Fyrri </span>
+								</li>
+							{% endif %}
+							<li class="page-item active">
+								<span class="page-link">
+									{{page_obj.number}}
+								</span>
+							</li>
+							{% if page_obj.has_next %}
+								<li class="page-item">
+									<a class="page-link" href='?page={{page_obj.next_page_number}}'> Næsta <i class="fa fa-arrow-right"></i></a>
+								</li>
+							{% else %}
+								<li class="page-item disabled">
+									<span class="page-link"> Næsta <i class="fa fa-arrow-right"></i> </span>
+								</li>
+							{% endif %}
+							<li class="page-item">
+								<a class="page-link" href='?page={{page_obj.paginator.num_pages}}'>Seinasta</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}

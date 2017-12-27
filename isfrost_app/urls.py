@@ -5,10 +5,13 @@ from . import views
 app_name = 'main'
 urlpatterns = [
 	   path('', views.index_view, name='index'),
+	   path('products/', views.product_list_view.as_view(), name='products'),
 	   path('products/categories/', views.product_category_list_view.as_view(),
 	   		   name='product_categories'),
 	   path('products/categories/<int:pk>/', views.product_category_detail_view.as_view(),
 	   		   name='product_category'),
+	   path('products/categories/<int:pk>/all/', views.products_by_category,
+	   		   name='products_by_category'),
 	   path('products/items/<int:pk>/', views.product_detail_view.as_view(), name='product'),
 	   path('services/categories/', views.service_category_list_view.as_view(),
 	   		   name='service_categories'),

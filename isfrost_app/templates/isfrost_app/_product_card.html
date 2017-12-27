@@ -1,0 +1,35 @@
+{% load humanize %}
+<div class="card content-card align-self-stretch">
+	<div class="card-img-container">
+		<div class="card-img-wrapper">
+			<img class="card-img-top" src="{{product.image.url}}">							
+		</div>
+	</div>
+	<div class="card-block">
+		<h5 class="card-title"> {{product.name}}</h5>
+		<p class="card-text">
+			{{product.short_description}}
+		</p>
+	</div>
+	<ul class="list-group list-group-flush">
+		<li class="list-group-item">
+			<span>
+				<i class='fa fa-tag btn-left-icon'></i>
+				{% if product_price %}
+					{{product.price | intcomma }}
+				{% else %}
+					Verð ekki skráð
+				{% endif %}
+			</span>
+		</li>
+		<li class="list-group-item">
+			<span>
+					<i class='fa fa-list btn-left-icon'></i>
+					{{product.product_category}}
+			</span>
+			
+		</li>
+	<div class="card-footer">
+		<a href="{% url 'main:product' product.pk %}" class="btn btn-primary btn-sm pull-right">Skoða</a>
+	</div>
+</div>

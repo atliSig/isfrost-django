@@ -15,7 +15,7 @@
 					<p class="lead">{{index.introduction}}</p>
 					<hr class="my-4" />
 					<p>Ef þú hefur einhverjar fyrirspurnir, ekki hika við að senda okkur skilaboð!</p>
-					<a href="#" role="button" data-toggle="modal" data-target="#contact-modal" class="btn btn-outline-secondary">
+					<a href="mailto:{{comapny.email}}" class="btn btn-outline-secondary">
 						<i class="btn-left-icon fa fa-envelope"></i>
 						Hafa samband
 					</a>
@@ -70,17 +70,17 @@
 			<div class="col-lg-4 col-md-6 col-12 d-flex">
 				<div class="card content-card align-self-stretch">
 					<div class="card-block">
-						<h3 class="card-title">{{category.category_name}}
+						<h3 class="card-title">{{category.name}}
 							<span class="pull-right">
-								<i class="fa fa-{{category.category_icon}}"></i>
+								<i class="fa fa-{{category.icon}}"></i>
 							</span>
 						</h3>
 						<p class="card-text">
-							{{category.category_description}}
+							{{category.short_description}}
 						</p>
 					</div>
 					<div class="card-footer">
-						<a href="#" class="btn btn-primary pull-right">Skoða nánar</a>
+						<a href="{% url 'main:service_category' category.pk %}" class="btn btn-primary pull-right">Skoða nánar</a>
 					</div>
 				</div>
 			</div>
@@ -108,7 +108,7 @@
 			{% for category in product_categories %}
 				<div class="row">
 					<div class="col-4 d-flex align-items-center desktop-product-img">
-						<img src="{{ category.category_image.url }}", class="img-fluid product-img" />
+						<img src="{{ category.image.url }}", class="img-fluid product-img" />
 					</div>
 					<div class="col-md-8 col-12 d-flex align-items-center">
 						<div class="container-fluid">
@@ -119,22 +119,22 @@
 							</div>
 							<div class="row">
 								<div class="col-12">
-									<h4>{{category.category_name}}</h4>
+									<h4>{{category.name}}</h4>
 								</div>
 							</div>
 							<div class="row mobile-product-img">
 								<div class="col-12">
-									<img src="{{ category.category_image.url }}", class="img-fluid product-img" />
+									<img src="{{ category.image.url }}", class="img-fluid product-img" />
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-12">
-									<p>{{category.category_description}}</p>
+									<p>{{category.short_description}}</p>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-12">
-									<a href="#" class="btn btn-primary pull-right product-btn">Skoða nánar</a>
+									<a href="{% url 'main:product_category' category.pk %}" class="btn btn-primary pull-right product-btn">Skoða nánar</a>
 								</div>
 							</div>
 							<div class="row">
@@ -176,7 +176,7 @@
 					<p class="card-text">Hér er hægt að nálgast allar helstu upplýsingar um starfsmenn Ísfrost.</p>
 				</div>
 				<div class="card-footer">
-					<a href="#" class="btn btn-primary pull-right">Skoða nánar</a>
+					<a href="{% url 'main:staff_list' %}" class="btn btn-primary pull-right">Skoða nánar</a>
 				</div>
 			</div>
 		</div>

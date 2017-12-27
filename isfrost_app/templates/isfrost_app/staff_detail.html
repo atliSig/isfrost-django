@@ -1,0 +1,63 @@
+{% extends 'isfrost_app/__base.html' %}
+{% block content %}
+	<div class="container detail-container">
+		<div class="row">
+			<div class="col-12">	
+				<h2>{{object.name}}</h2>
+				<h3>{{object.position}}</h3>
+				<a href="{% url 'main:staff_list' %}" class='btn btn-secondary pull-right'>
+					<i class='fa fa-arrow-left btn-left-icon'></i>
+					Allir starfsmenn
+				</a>
+			</div>
+			<div class="col-12">
+				<hr/>
+			</div>
+		</div>
+		<div class='row'>
+			<div class="col-6">
+				<p>Samskiptaupplýsingar starfsmanns:</p>
+				<div class="row">
+					<div class="col-12">
+						{% if object.email %}
+							<a href='mailto:{{object.email}}' class='btn btn-secondary staff-btn'>
+								<i class='fa fa-envelope'></i>
+								{{object.email}}
+							</a>
+						{% else %}
+							<a href='#' disabled='true' class='btn btn-secondary staff-btn'>
+								<i class='fa fa-envelope'></i>
+								Ekki skráð
+							</a>
+						{% endif %}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						{% if object.phone %}
+							<a href='tel:00354{{object.phone}}' class='btn btn-secondary staff-btn'>
+								<i class='fa fa-phone'></i>
+								{{object.phone}}
+							</a>
+						{% else %}
+							<a href='#' disabled='true' class='btn btn-secondary staff-btn'>
+								<i class='fa fa-phone'></i>
+								Ekki skráð
+							</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="col-6">
+				<div class="detail-img-wrapper">
+					<img class="img-fluid mx-auto d-block" src="{{object.image.url}}">								
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<hr/>
+			</div>
+		</div>
+	</div>
+{% endblock %}

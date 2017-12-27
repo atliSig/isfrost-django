@@ -1,0 +1,65 @@
+{% extends 'isfrost_app/__base.html' %}
+{% block content %}
+	<div class='container list-container'>
+		<div class="row">
+			<div class="col-12">
+				<h3>Allir starfsmenn</h3>
+				<hr/>
+			</div>
+		</div>
+		{% if object_list %}
+			<div class="row">
+				{% for staff in object_list %}
+					<div class="col-lg-4 col-md-6 col-12">
+						<div class="card content-card align-self-stretch">
+							<div class="card-block">
+								<h5 class="card-title"> {{staff.name}}</h5>
+								<p class="card-text">
+									{{staff.position}}
+								</p>
+							</div>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item">
+									{% if staff.phone%}
+										<a href="tel:00354{{staff.phone}}">
+											<i class="fa fa-phone btn-left-icon"></i>
+											{{staff.phone}}
+										</a>
+									{% else %}
+										<span>
+											<i class="fa fa-phone btn-left-icon"></i> 
+											Ekki skráð
+										</span>	
+									{% endif %}
+								</li>
+								<li class="list-group-item">
+									{% if staff.email%}
+										<a href="mailto:{{staff.email}}">
+											<i class="fa fa-envelope btn-left-icon"></i>
+											{{staff.email}}
+										</a>
+									{% else %}
+										<span>
+											<i class="fa fa-envelope btn-left-icon"></i> 
+											Ekki skráð
+										</span>	
+									{% endif %}									
+								</li>
+							</ul>
+							<div class="card-footer">
+								<a href="{% url 'main:staff' staff.pk %}" class="btn btn-secondary btn-sm pull-right">
+									Nánar
+									<i class='fa fa-user btn-right-icon'></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		{% else %}
+			<h4>Ekkert fannst!</h4>
+			<p>Prófaðu að fara til baka</p>
+			<a href='/' class='btn btn-primary'>Til baka</a>
+		{% endif %}
+		</div>
+{% endblock %}

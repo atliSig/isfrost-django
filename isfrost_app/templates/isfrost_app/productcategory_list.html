@@ -12,12 +12,12 @@
             <div class="row">
                 <div class="col-sm-4 col-12 push-sm-8">
                     <div class="list-img-wrapper">
-                        <img class="img-fluid mx-auto d-block list-image" src="{{category.category_image.url}}">								
+                        <img class="img-fluid mx-auto d-block list-image" src="{{category.image.url}}">								
                     </div>
                 </div>
                 <div class="col-sm-8 col-12 pull-sm-4">
-                    <h4>{{category.category_name}}</h4>
-                    <p>{{category.category_description}}</p>
+                    <h4>{{category.name}}</h4>
+                    <p>{{category.short_description}}</p>
                     <div class="row">
                         <div class="col-12">
                             <a href="{% url 'main:product_category' category.pk %}" class="btn btn-primary list-button">

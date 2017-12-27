@@ -213,9 +213,28 @@ div.mobile-product-img{
 	margin-top: 25px;
 }
 
+.filter-form{
+	margin-bottom: 20px;
+}
+
+.staff-btn{
+	margin-bottom:10px;
+}
+
+.fa-facebook-square{
+	color: #4267b2;
+}
 
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
+	.list-button{
+		margin-top: 0;
+		float:right;
+	}
+	
+	.xs-hide{
+		display:none;
+	}
 
 	.index-button{
 		padding: 10px;
@@ -240,15 +259,11 @@ div.mobile-product-img{
 	.hero-title{
 		font-size: 30px
 	}
-
-	.list-button{
-		margin-top: 0;
-		float:right;
-	}
 }
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
+	
 	.list-img-wrapper{
 		float:none !important;
 	}
@@ -269,6 +284,7 @@ div.mobile-product-img{
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
+	
 	.news{
 		display: none;
 	}

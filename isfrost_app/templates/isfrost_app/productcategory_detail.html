@@ -3,18 +3,47 @@
 	<div class="container list-container">
 		<div class="row">
 			<div class="col-12">
-				<h1>{{object.category_name}}</h1>					
-				<p>{{object.category_description}}</p>
+				<h1>{{object.name}}</h1>					
+				<p>{{object.short_description}}</p>
+				<a href='{% url "main:product_categories" %}' class='btn btn-primary pull-right'>
+					Allir vöruflokkar
+					<i class='fa fa-arrow-right btn-right-icon'></i>
+				</a>
+			</div>
+			<div class="col-12">
 				<hr/>
 			</div>
 			<div class="col-lg-5 push-lg-7 col-md-12">
 				<div class="detail-img-wrapper">
-					<img class="img-fluid mx-auto d-block"src="{{object.category_image.url}}">								
+					<img class="img-fluid mx-auto d-block"src="{{object.image.url}}">								
 				</div>
 			</div>
 			<div class="col-lg-7 pull-lg-5 col-md-12">
 				{{object.detailed_description | linebreaks}}
 			</div>
 		</div>
+		{% if related_products %}
+			<div class="row">
+				<div class="col-12">
+						<hr/>
+				</div>
+				<div class="col-12">
+					<h3>Tengdar vörur</h3>
+				</div>
+			</div>
+			<div class="row">
+				{% for product in related_products %}
+					<div class="col-xl-4 col-md-6 d-flex">
+						{% include 'isfrost_app/_product_card.html' with product=product %}	
+					</div>
+				{% endfor %}
+				<div class="col-12">
+					<a href='{% url "main:products_by_category" object.pk %}' class='btn btn-secondary pull-right'>
+						Allar vörur í þessum flokki
+						<i class='fa fa-arrow-right btn-right-icon'></i>
+					</a>
+				</div>
+			</div>
+		{% endif %}
 	</div>
 {% endblock %}
