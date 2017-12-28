@@ -74,10 +74,10 @@ class ServiceCategory(models.Model):
 
 class Service(models.Model):
     """The Service model class"""
-    name = models.CharField('Service name', max_length=200)
-    pub_date = models.DateTimeField('Date published', default=timezone.now)
+    name = models.CharField('Þjónusta', max_length=200)
+    pub_date = models.DateTimeField('Búið til þann', default=timezone.now)
     service_category = models.ForeignKey(ServiceCategory, on_delete=models.CASCADE, default=1)
-    text = models.TextField('About service', default='Engar nánari upplýsingar')
+    description = models.TextField('Um þjónustu', default='Engar nánari upplýsingar', blank=True)
     class Meta:
         verbose_name = 'Þjónusta'
         verbose_name_plural = 'Þjónustur'
@@ -152,7 +152,11 @@ class Company(models.Model):
 
 class IndexPage(models.Model):
     """The index page model class"""
-    introduction = models.TextField('Lýsing á forsíðu', null=True)
+    introduction = models.TextField('Lýsing á forsíðu', blank=True)
+    service_description = models.TextField('Lýsing fyrir þjónustu', blank=True)
+    product_description = models.TextField('Lýsing fyrir vörur', blank=True)
+    about_description = models.TextField('Lýsing fyrir fyrirtækjaupplýsingar', blank=True)
+    news_description = models.TextField('Lýsing á fréttum', blank=True)
     cover_image = models.ImageField('Forsíðumynd', upload_to='images/company/%Y/%m', null=True)   
     def admin_img(self):
         """Returns a markup block to display image in admin view"""
@@ -162,3 +166,11 @@ class IndexPage(models.Model):
     class Meta:
         verbose_name =  'Forsíða'
         verbose_name_plural = 'Forsíðan'
+
+class AboutPage(models.Model):
+    """The about page model class"""
+    text = models.TextField('Texti á síðu um ísfrost', blank=True)
+
+    class Meta:
+        verbose_name = 'Um Ísfrost'
+        verbose_name_plural = 'Um Ísfrost'

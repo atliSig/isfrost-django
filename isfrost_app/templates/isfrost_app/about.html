@@ -1,0 +1,51 @@
+{% extends 'isfrost_app/__base.html' %}
+{% block content %}
+	<div class='container detail-container'>
+		<div class="row">
+			<div class="col-12">
+				<h2>Ísfrost</h2>
+				<h4>Helstu upplýsingar um fyrirtækið</h4>
+			</div>
+			<div class="col-12">
+				<a href="{% url 'main:staff_list' %}" class='btn btn-secondary pull-right right-btn top-btn'>
+					Starfsmenn
+					<i class='fa fa-user btn-right-icon'></i>
+				</a>
+				<a href="{% url 'main:articles' %}" class='btn btn-primary pull-right'>
+					<i class='fa fa-newspaper-o btn-left-icon'></i>
+					Fréttir
+				</a>
+			</div>
+			<div class="col-12">
+				<hr/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-8 col-12">
+				<h4>Um Ísfrost</h4>
+				<p>{{ about.text | linebreaks }}</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<hr/>
+			</div>
+		</div>
+		{% if articles %}
+			<div class="row">
+				<div class="col-12">
+					<h4>Fréttir af Ísfrost</h4>
+				</div>
+				<div class="col-12">
+					<div class="row">
+						{% for article in articles %}
+							<div class="col-lg-4 col-md-6 col-12 d-flex">
+								{% include "isfrost_app/_article_card.html" with article=article %}
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}

@@ -22,4 +22,5 @@ urlpatterns = [
 	   path('staff/<int:pk>/', views.staff_detail_view.as_view(), name='staff'),
 	   path('articles/<int:pk>/', views.article_detail_view.as_view(), name='article'),
 	   path('articles/', views.article_list_view.as_view(), name='articles'),
+	   path('about/', views.about_view, name='about')
 ]

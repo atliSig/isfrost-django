@@ -1,6 +1,6 @@
 """The admin condfiguration for the isfrost_app app"""
 from django.contrib import admin
-from .models import Product, ProductCategory, Service, ServiceCategory, Staff, Article, Company, IndexPage
+from .models import Product, ProductCategory, Service, ServiceCategory, Staff, Article, Company, IndexPage, AboutPage
 
 def duplicate_action(modeladmin, request, queryset):
     for object in queryset:
@@ -20,11 +20,17 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['name']
     actions = [duplicate_action]
 
+class ServiceInline(admin.TabularInline):
+    model = Service
+    fields = ['name', 'description']
+    extra = 1
+
 class ServiceCategoryAdmin(admin.ModelAdmin):
     """An admin model wrapper for the ServiceCategory model"""
     fields = ['name', 'short_description', 'detailed_description', 'icon', 'admin_icon', 'pub_date']
     readonly_fields = ['admin_icon']
-
+    inlines = [ServiceInline]
+    
 class StaffAdmin(admin.ModelAdmin):
     """An admin model wrapper for the Staff model"""
     fields = ['name', 'email', 'phone','position', 'image', 'admin_img', 'pub_date']
@@ -40,8 +46,13 @@ class ArticleAdmin(admin.ModelAdmin):
 
 class IndexPageAdmin(admin.ModelAdmin):
     """An admin model wrapper for the Index page model"""
-    fields = ['introduction', 'cover_image', 'admin_img']
+    fields = ['introduction','service_description','product_description',
+    'about_description','news_description','cover_image', 'admin_img']
     readonly_fields = ['admin_img']
+
+class AboutPageAdmin(admin.ModelAdmin):
+    """An admin model wrapper for the About Page model"""
+    fields = ['text']
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductCategory, ProductCategoryAdmin)
@@ -51,3 +62,4 @@ admin.site.register(Staff, StaffAdmin)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Company)
 admin.site.register(IndexPage, IndexPageAdmin)
+admin.site.register(AboutPage, AboutPageAdmin)

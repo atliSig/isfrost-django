@@ -1,1 +1,67 @@
-<p> {{object.product_name}} </p>
+{% extends 'isfrost_app/__base.html' %}
+{% load humanize %}
+{% block content %}
+	<div class="container detail-container">
+		<div class="row">
+			<div class="col-12">
+				<h2>{{object.name}}</h2>
+				<h4>{{object.short_description}}</h4>
+			</div>
+			<div class="col-12">
+				<a href="{% url 'main:product_category' object.product_category.pk %}" class='btn btn-secondary pull-right right-btn top-btn'>
+						{{object.product_category}}
+					<i class='fa fa-arrow-right btn-right-icon'></i>
+				</a>
+				<a href="{% url 'main:products' %}" class='btn btn-primary pull-right'>
+					<i class='fa fa-shopping-cart btn-left-icon'></i>
+					Allar vörur
+				</a>
+			</div>
+			<div class="col-12">
+				<hr/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4 push-lg-8 col-md-6 push-md-6 col-12">
+				<div class="detail-img-wrapper">
+					<img class="img-fluid mx-auto d-block" src="{{object.image.url}}">								
+				</div>
+			</div>
+			<div class="col-lg-8 pull-lg-4 col-md-6 pull-md-6 col-12">
+				<h4>Um vöru</h4>
+				<p>{{object.detailed_description | linebreaks }}</p>
+				<p>
+					<i class='fa fa-tag btn-left-icon'></i>
+					{% if object.price %}
+						{{object.price | intcomma }}
+					{% else %}
+						Verð ekki skráð
+					{% endif %}
+				</p>
+			</div>
+		</div>
+		{% if related %}
+			<div class="row">
+				<div class="col-12">
+					<hr/>
+					<h4>Aðrar vörur í {{object.product_category}}</h4>
+				</div>
+			</div>
+			<div class="row">
+				{% for product in related %}
+					<div class="col-xl-4 col-md-6 d-flex">
+						{% include 'isfrost_app/_product_card.html' with product=product %}	
+					</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+		<div class="row">
+			<div class="col-12">
+				<a href="{% url 'main:products_by_category' object.product_category.pk %}" class='btn btn-secondary pull-right right-btn top-btn'>
+						Meira úr {{object.product_category}}
+					<i class='fa fa-arrow-right btn-right-icon'></i>
+				</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

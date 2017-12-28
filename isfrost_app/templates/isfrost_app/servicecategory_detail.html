@@ -1,2 +1,72 @@
-<h1>Category</h1>
-<p>{{ object.pub_date }} - {{ object.name }}</p>
+{% extends 'isfrost_app/__base.html' %}
+{% block content %}
+	<div class="container detail-container">
+		<div class="row">
+			<div class="col-12">
+				<h1>{{object.name}}
+					<span>
+						<i class='fa fa-{{object.icon}} pull-right'></i>
+					</span>
+				</h1>
+				<p>{{object.short_description}}</p>
+				<a href='{% url "main:service_categories" %}' class='btn btn-primary pull-right'>
+					Allir þjónustuflokkar
+					<i class='fa fa-arrow-right btn-right-icon'></i>
+				</a>
+			</div>
+			<div class="col-12">
+				<hr/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-8 col-12">
+				<h4>Nánar um þjónustuflokkinn</h4>
+				<p>{{object.detailed_description | linebreaks}}</p>
+			</div>
+			<div class="col-lg-4 col-12">
+				<ul class="list-group" id="accordion" role="tablist" aria-multiselectable="true">
+					<li class='list-group-item'>
+						<div class='list-wrapper'>
+							<span>
+								Þjónustur
+								<span class="pull-right">
+									<i class='fa fa-info-circle'></i>
+								</span>
+							</span>
+						</div>
+					</li>
+					{% for service in services %}
+						<li class="list-group-item">
+							<a href='#service{{forloop.counter}}'>
+								{{service.name}}
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<hr/>
+				<h4>Nánar um þjónustur</h4>
+			</div>
+		</div>
+		<div class="row">
+			{% for service in services %}
+				<div class="col-12" id="service{{forloop.counter}}">
+					<div class="card card-block service-card">
+						<h5>
+							{{service.name}}
+							<i class='fa fa-check-square pull-right'></i>
+						</h5>
+						<div class="row">
+							<div class="col-md-6 col-12">
+								<p>{{service.description}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

@@ -143,6 +143,10 @@ border-color:#fff;
 	margin-left: 5px;
 }
 
+.right-btn{
+	margin-left: 5px;
+}
+
 .success{
 	color: #5cb85c;
 }
@@ -225,8 +229,20 @@ div.mobile-product-img{
 	color: #4267b2;
 }
 
+.list-wrapper{
+	width:100%;
+}
+
+.service-card{
+	margin-bottom: 10px;
+}
+
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
+	.top-btn{
+		margin-bottom:5px;
+	}
+	
 	.list-button{
 		margin-top: 0;
 		float:right;

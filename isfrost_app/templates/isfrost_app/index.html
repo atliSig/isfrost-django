@@ -61,7 +61,7 @@
 		<div class="col-12">
 			<hr/>
 			<h3>Þjónustan</h3>
-			<p>Ísfrost ehf er fyrst og fremst þjónustufyrirtæki. Við þjónustum nánast allt sem við kemur kæli og frystikerfum.</p>
+			<p>{{index.service_description}}</p>
 			<hr/>
 		</div>
 	</div>
@@ -85,8 +85,8 @@
 				</div>
 			</div>
 		{% endfor %}
-		<div class="col-md-4 offset-md-8 col-xl-3 offset-xl-9 col-12">
-			<a href="{% url 'main:service_categories' %}" class="btn btn-block btn-secondary index-info-btn">
+		<div class="col-12">
+			<a href="{% url 'main:service_categories' %}" class="btn btn-secondary index-info-btn pull-right">
 				Skoða alla þjónustuflokka
 				<i class="btn-right-icon fa fa-arrow-right"></i>
 			</a>
@@ -96,10 +96,7 @@
 		<div class="col-12">
 			<hr/>
 			<h3>Vörurnar</h3>
-			<p>
-				Hvort sem þig vantar loftkælingu í tölvurýmið, frystiklefa á veitingahúsið eða varmadælu í sumarbústaðinn, þá erum við með
-				lausnina. Áratuga reynsla og viðurkenndur búnaður tryggja þér bestu mögulegu útkomu, sama hvert verkefnið er.
-			</p>
+			<p>{{index.product_description}}</p>
 			<hr/>
 		</div>
 	</div>
@@ -147,8 +144,8 @@
 				</div>
 			{% endfor %}
 		</div>
-		<div class="col-md-4 offset-md-8 col-xl-3 offset-xl-9 col-12">
-			<a href="{% url 'main:product_categories' %}" class="btn btn-block btn-secondary index-info-btn">
+		<div class="col-12">
+			<a href="{% url 'main:product_categories' %}" class="btn btn-secondary index-info-btn pull-right">
 				Skoða alla vöruflokka
 				<i class="btn-right-icon fa fa-arrow-right"></i>
 			</a>
@@ -159,8 +156,7 @@
 		<div class="col-12">
 			<hr/>
 			<h3>Um okkur</h3>
-			<p></p>Saga Ísfrost ehf nær aftur til 1994 þegar Jón Friðrik Egilsson og Guðmundur Brynjólfsson hófu rekstur í litlum bílskúr
-			í Grafarvogi.
+			<p>{{index.about_description}}</p>
 			<hr/>
 		</div>
 	</div>
@@ -218,9 +214,7 @@
 			<div class="col-12">
 				<hr/>
 				<h3>Fréttir</h3>
-				<p>
-					Nýjungar og fréttir af störfum Ísfrosts eru fáanlegar hér
-				</p>
+				<p>{{index.news_description}}</p>
 				<hr/>
 			</div>
 		</div>

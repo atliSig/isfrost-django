@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views import generic
-from .models import Service, Product, ProductCategory, ServiceCategory, Staff, Article, IndexPage
+from .models import Service, Product, ProductCategory, ServiceCategory, Staff, Article, IndexPage, AboutPage
 
 class product_category_list_view(generic.ListView):
     """A generic list view for product categories"""
@@ -53,6 +53,7 @@ class product_detail_view(generic.DetailView):
     def get_context_data(self, **kwargs):
         """Gets context for view"""
         context = super().get_context_data(**kwargs)
+        context['related'] = Product.objects.all().exclude(pk=context['object'].pk)[:3]
         return context
 
 class service_category_list_view(generic.ListView):
@@ -71,6 +72,7 @@ class service_category_detail_view(generic.DetailView):
     def get_context_data(self, **kwargs):
         """Gets context for view"""
         context = super().get_context_data(**kwargs)
+        context['services'] = Service.objects.filter(service_category=context['object'].pk)
         return context
 
 class service_detail_view(generic.DetailView):
@@ -117,12 +119,17 @@ class article_detail_view(generic.DetailView):
         return context
 
 def index_view(request):
-    try:
-        index = IndexPage.objects.all()[:1].get()
-    except:
-        index = None
+    index = IndexPage.objects.all()[:1].get()
     context = {
         'index' : index,
         'articles': Article.objects.new_items()[:3]
     }
     return render(request, 'isfrost_app/index.html', context)
+
+def about_view(request):
+    about = AboutPage.objects.all()[:1].get()
+    context = {
+        'about': about,
+        'articles': Article.objects.new_items()[:3]
+    }
+    return render(request, 'isfrost_app/about.html', context)

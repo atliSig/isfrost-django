@@ -15,7 +15,7 @@
 					{% endfor %}
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="{% url 'main:products' %}"> Allar vörur</a>
-					<a class="dropdown-item" href="{% url 'main:product_categories' %}">Allir flokka</a>
+					<a class="dropdown-item" href="{% url 'main:product_categories' %}">Allir flokkar</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown"><a id="navbarDropdownMenuLink2" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Þjónusta</a>
@@ -24,7 +24,7 @@
 						<a href="{% url 'main:service_category' category.pk %}" class="dropdown-item">{{category.name}}</a>
 					{% endfor %}
 					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="{% url 'main:service_categories' %}">Skoða alla flokka</a>
+					<a class="dropdown-item" href="{% url 'main:service_categories' %}">Allir flokkar</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown"><a id="navbarDropdownMenuLink3" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Um Ísfrost</a>
