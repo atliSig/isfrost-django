@@ -8,7 +8,7 @@ class ProductCategory(models.Model):
     """The ProductCategory model class"""
     name = models.CharField('Nafn vöruflokks', max_length=200)
     pub_date = models.DateTimeField('Búið til þann', default=timezone.now)
-    image = models.ImageField(upload_to='images/product_categories/%Y/%m', null=True)
+    image = models.ImageField(upload_to='images/product_categories/%Y/%m', default='images/defaults/product.png', blank=True, null=True)
     short_description = models.TextField('Stutt lýsing um vöruflokk', default='Engar nánari upplýsingar')
     detailed_description = models.TextField('Nánar um vöruflokk', default='Engar nánari upplýsingar', null=True)
     def admin_img(self):
@@ -32,7 +32,7 @@ class Product(models.Model):
     detailed_description = models.TextField('Nánari upplýsingar um vöru', default='Engar nánari upplýsingar', null=True)
     short_description = models.TextField('Stutt lýsing um vöru', default='Engar nánari upplýsingar', null=True)
     price = models.IntegerField('Verð', blank=True, null=True)
-    image = models.ImageField(upload_to='images/products/%Y/%m', null=True)
+    image = models.ImageField(upload_to='images/products/%Y/%m', default='images/defaults/product.png', blank=True, null=True)
     def admin_img(self):
         """Returns a markup block to display image in admin view"""
         return mark_safe('<img src="%s"/>' % self.image.url)
@@ -57,7 +57,7 @@ class ServiceCategory(models.Model):
     pub_date = models.DateTimeField('Date published', default=timezone.now)
     short_description = models.TextField('Stutt lýsing um þjónustuflokk', default='Engar nánari upplýsingar')
     detailed_description = models.TextField('Nánar um þjónustuflokk', default='Engar nánari upplýsingar', null=True)
-    icon = models.CharField('tákn', max_length=20, null=True,
+    icon = models.CharField('tákn', max_length=20, default='snowflake-o', blank=True, null=True,
         help_text="1. Finna tákn hér: http://fontawesome.io/icons/ "+
         "2. Láta inn nafn, t.d. \"address-book\"")
     def admin_icon(self):
@@ -92,7 +92,7 @@ class Staff(models.Model):
     position = models.CharField('Deild eða starfsheiti', max_length=200, default='Almennur starfsmaður')
     email = models.EmailField('Póstur', max_length=200, blank=True)
     phone = models.CharField('Símanúmer', max_length=7, blank=True)
-    image = models.ImageField(upload_to='images/staff/%Y/%m', null=True)
+    image = models.ImageField(upload_to='images/staff/%Y/%m', default='images/defaults/user.png', blank=True, null=True)
     def admin_img(self):
         """Returns a markup block to display image in admin view"""
         return mark_safe('<img src="%s"/>' % self.image.url)
@@ -116,7 +116,7 @@ class Article(models.Model):
     subtitle = models.CharField('Undirtexti', max_length=200)
     pub_date = models.DateTimeField('Búið til þann', default=timezone.now)
     text = models.TextField('Texti')
-    image = models.ImageField(upload_to='images/articles/%Y/%m', null=True)
+    image = models.ImageField(upload_to='images/articles/%Y/%m', default='images/defaults/article.png', blank=True, null=True)
     def admin_img(self):
         """Returns a markup block to display image in admin view"""
         return mark_safe('<img src="%s"/>' % self.image.url)

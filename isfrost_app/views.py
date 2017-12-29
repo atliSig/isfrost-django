@@ -103,9 +103,11 @@ class staff_detail_view(generic.DetailView):
         return context
 
 class article_list_view(generic.ListView):
+    """A generic list view for the Article model"""
     model = Article
     paginate_by = 9
     def get_context_data(self, **kwargs):
+        """A context wrapper"""
         context = super().get_context_data(**kwargs)
         return context
 
@@ -133,3 +135,12 @@ def about_view(request):
         'articles': Article.objects.new_items()[:3]
     }
     return render(request, 'isfrost_app/about.html', context)
+
+def search(request):
+    query = request.GET['q']
+    context = {
+        'staff': Staff.objects.filter(name__unaccent__icontains=query)[:5],
+        'articles': Article.objects.filter(title__unaccent__icontains=query)[:5],
+        'products': Product.objects.filter(name__unaccent__icontains=query)[:5] 
+    }   
+    return render(request, 'isfrost_app/search.html', context)

@@ -15,8 +15,8 @@
 		<li class="list-group-item">
 			<span>
 				<i class='fa fa-tag btn-left-icon'></i>
-				{% if product_price %}
-					{{product.price | intcomma }}
+				{% if product.price %}
+					{{product.price | intcomma }} krónur
 				{% else %}
 					Verð ekki skráð
 				{% endif %}

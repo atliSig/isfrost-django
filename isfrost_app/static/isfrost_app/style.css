@@ -182,6 +182,7 @@ div.mobile-product-img{
 
 .card-img-container{
 	height: 200px;
+	background-color: #eee;
 	overflow-y: hidden;
 }
 

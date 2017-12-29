@@ -1,0 +1,115 @@
+{% extends 'isfrost_app/__base.html' %}
+{% load humanize %}
+{% block content %}
+	<div class="container list-container">
+		<div class="row">
+			<div class="col-12">
+				<h3>
+					Leitarniðurstöður fyrir 
+					<span class="badge badge-default">{{request.GET.q }}</span>
+				</h3>
+				<a href='/' class='btn btn-secondary pull-right'> 
+					<i class='fa fa-arrow-left btn-left-icon'></i>
+					Aftur á forsíðu 
+				</a>
+			</div>
+			<div class="col-12">
+				<hr/>
+			</div>
+		</div>
+		{% if not staff and not products and not articles %}
+			<div class="row">
+				<div class="col-12">
+					<h4>Engar niðurstöður</h4>
+					<p>Athugaðu villur eða prófaðu að víkka leitina.</p>
+				</div>
+			</div>
+		{% else %}
+			{% if staff %}
+				<div class="row">
+					<div class="col-12">
+						<h4>
+							Starfsfólk
+							<i class="fa fa-user pull-right"></i>
+						</h4>
+					</div>
+				</div>
+				{% for staff in staff %}
+					<div class="row">
+						<div class="col-12">
+							<div class="card service-card">
+								<div class="card-block">
+									<h5 class="card-title">{{staff.name}}</h5>
+									<p class="card-text" >{% if staff.position %}{{staff.position}}{% else %}Engin starfslýsing{% endif %}</p>
+								</div>
+								<div class="card-footer">
+									<a href="{% url 'main:staff' staff.pk %}" class="btn btn-secondary pull-right btn-sm">Skoða</a>	
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}
+			{% if products %}
+				<div class="row">
+					<div class="col-12">
+						<h4>
+							Vörur
+							<i class="fa fa-shopping-cart pull-right"></i>
+						</h4>
+					</div>
+				</div>
+				{% for product in products %}
+					<div class="row">
+						<div class="col-12">
+							<div class="card service-card">
+								<div class="card-block">
+									<h5 class="card-title">{{product.name}}</h5>
+									<p class="card-text" >{% if product.short_description %}{{product.short_description}}{% else %}Engar nánari upplýsingar{% endif %}</p>
+								</div>
+								<div class="card-footer">
+									<a href="{% url 'main:product' product.pk %}" class="btn btn-secondary pull-right btn-sm">Skoða</a>	
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}
+			{% if articles %}
+				<div class="row">
+					<div class="col-12">
+						<h4>
+							Fréttir
+							<i class="fa fa-newspaper-o pull-right"></i>
+						</h4>
+					</div>
+				</div>
+				{% for article in articles %}
+					<div class="row">
+						<div class="col-12">
+							<div class="card service-card">
+								<div class="card-block">
+									<h5 class="card-title">{{article.title}}</h5>
+									<p class="card-text" >{% if article.short_description %}{{article.short_description}}{% else %}Engar nánari upplýsingar{% endif %}</p>
+								</div>
+								<div class="card-footer">
+									<a href="{% url 'main:article' article.pk %}" class="btn btn-secondary pull-right btn-sm">Skoða</a>	
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}
+		{% endif %}
+	<div class="row">
+		<div class="col-12">
+			<hr/>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			
+		</div>
+	</div>
+	</div>
+{% endblock%}
