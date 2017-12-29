@@ -238,8 +238,18 @@ div.mobile-product-img{
 	margin-bottom: 10px;
 }
 
+.index-product-img{
+	max-height:300px;
+	display: block;
+	margin: auto;
+}
+
+.product-row{
+	margin-bottom: 50px;
+}
 /* Extra Small Devices, Phones */
 @media only screen and (max-width : 480px) {
+	
 	.top-btn{
 		margin-bottom:5px;
 	}
@@ -280,7 +290,10 @@ div.mobile-product-img{
 
 /* Small Devices, Tablets */
 @media only screen and (max-width : 768px) {
-	
+	.product-row{
+		margin-bottom: 20px;
+	}
+
 	.list-img-wrapper{
 		float:none !important;
 	}
