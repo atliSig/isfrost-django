@@ -53,7 +53,7 @@ class product_detail_view(generic.DetailView):
     def get_context_data(self, **kwargs):
         """Gets context for view"""
         context = super().get_context_data(**kwargs)
-        context['related'] = Product.objects.all().exclude(pk=context['object'].pk)[:3]
+        context['related'] = Product.objects.filter(pk=context['object'].pk)[:3]
         return context
 
 class service_category_list_view(generic.ListView):
@@ -137,10 +137,12 @@ def about_view(request):
     return render(request, 'isfrost_app/about.html', context)
 
 def search(request):
+    '''Very basic search that returns the top 5 results for 4 categories'''
     query = request.GET['q']
     context = {
         'staff': Staff.objects.filter(name__unaccent__icontains=query)[:5],
         'articles': Article.objects.filter(title__unaccent__icontains=query)[:5],
-        'products': Product.objects.filter(name__unaccent__icontains=query)[:5] 
+        'products': Product.objects.filter(name__unaccent__icontains=query)[:5],
+        'product_categories': ProductCategory.objects.filter(name__unaccent__icontains=query)[:5]
     }   
     return render(request, 'isfrost_app/search.html', context)

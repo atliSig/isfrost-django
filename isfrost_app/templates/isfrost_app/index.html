@@ -15,7 +15,7 @@
 					<p class="lead">{{index.introduction}}</p>
 					<hr class="my-4" />
 					<p>Ef þú hefur einhverjar fyrirspurnir, ekki hika við að senda okkur skilaboð!</p>
-					<a href="mailto:{{comapny.email}}" class="btn btn-outline-secondary">
+					<a href="mailto:{{company.email}}" class="btn btn-outline-secondary">
 						<i class="btn-left-icon fa fa-envelope"></i>
 						Hafa samband
 					</a>
@@ -108,7 +108,7 @@
 						<img src="{{ category.image.url }}", class="img-fluid index-product-img" />
 					</div>
 					<div class="col-md-8 col-12 d-flex align-items-center">
-						<div class="container-fluid">
+						<div class="container-fluid category-index-description">
 							<div class="row">
 								<div class="col-12">
 									<hr/>
@@ -221,7 +221,7 @@
 		<div class="row content-row">
 			{% for article in articles %}
 				<div class="col-lg-4 col-md-6 col-12 d-flex">
-					{% include "isfrost_app/_article_card.html" with article=article %}
+					{% include "isfrost_app/_article_card.html" with article=article index=True %}
 				</div>
 			{% endfor %}
 		</div>

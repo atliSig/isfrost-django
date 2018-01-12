@@ -9,6 +9,10 @@ body{
 	background-color: #fdfdfd;
 }
 
+.category-index-description{
+	width: 100%;
+}
+
 .navbar-brand-img{
 height:30px
 }

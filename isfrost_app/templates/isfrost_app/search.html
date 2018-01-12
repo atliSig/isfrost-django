@@ -17,7 +17,7 @@
 				<hr/>
 			</div>
 		</div>
-		{% if not staff and not products and not articles %}
+		{% if not staff and not products and not articles and not product_categories %}
 			<div class="row">
 				<div class="col-12">
 					<h4>Engar niðurstöður</h4>
@@ -69,6 +69,31 @@
 								</div>
 								<div class="card-footer">
 									<a href="{% url 'main:product' product.pk %}" class="btn btn-secondary pull-right btn-sm">Skoða</a>	
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}
+			{% if product_categories %}
+				<div class="row">
+					<div class="col-12">
+						<h4>
+							Vöruflokkar
+							<i class="fa fa-info-circle pull-right"></i>
+						</h4>
+					</div>
+				</div>
+				{% for category in product_categories %}
+					<div class="row">
+						<div class="col-12">
+							<div class="card service-card">
+								<div class="card-block">
+									<h5 class="card-title">{{category.name}}</h5>
+									<p class="card-text" >{% if category.short_description %}{{category.short_description}}{% else %}Engar nánari upplýsingar{% endif %}</p>
+								</div>
+								<div class="card-footer">
+									<a href="{% url 'main:product_category' category.pk %}" class="btn btn-secondary pull-right btn-sm">Skoða</a>	
 								</div>
 							</div>
 						</div>

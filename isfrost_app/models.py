@@ -90,7 +90,7 @@ class Staff(models.Model):
     name = models.CharField('nafn', max_length=200)
     pub_date = models.DateTimeField('Búið til þann', default=timezone.now)
     position = models.CharField('Deild eða starfsheiti', max_length=200, default='Almennur starfsmaður')
-    email = models.EmailField('Póstur', max_length=200, blank=True)
+    email = models.CharField('Póstur', max_length=200, blank=True)
     phone = models.CharField('Símanúmer', max_length=7, blank=True)
     image = models.ImageField(upload_to='images/staff/%Y/%m', default='images/defaults/user.png', blank=True, null=True)
     def admin_img(self):
